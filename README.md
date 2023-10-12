@@ -1,5 +1,5 @@
 # VIT2 Python-Module-Week5
-- Soru1: Bir dikdörtgeni temsil eden "Rectangle" adında bir Python sınıfı oluşturun. Rectangle sınıfı aşağıdaki özelliklere ve yöntemlere sahip olmalıdir:
+Soru1: Bir dikdörtgeni temsil eden "Rectangle" adında bir Python sınıfı oluşturun. Rectangle sınıfı aşağıdaki özelliklere ve yöntemlere sahip olmalıdir:
 * Özellikler:
 - genişlik (bir tam sayı)
 - yükseklik (bir tam sayı)
