@@ -43,10 +43,29 @@ Bir "Taşıt" sınıfı oluşturun ve bu sınıftan türetilmiş iki alt sınıf
 - "SporAraba" sınıfı da "Taşıt" sınıfından miras alsın ve ek olarak bir "maksimum_hız" özelliği eklesin.
 
 Her bir sınıftan birer örnek oluşturun, özelliklerini belirleyin ve bu özellikleri görüntülemek için bir program yazın.
+##
+ Soru5: Bir "Müşteri" sınıfı ve bir "Hesap" sınıfı oluşturun. "Hesap" sınıfı, "Müşteri" sınıfından miras alsın ve bir müşterinin banka hesap bilgilerini temsil etsin.
 
+##### Müşteri Sınıfı Özellikleri:
+- "ad" (müşteri adı)
+- "soyad" (müşteri soyadı)
+- "tc_kimlik" (müşteri TC kimlik numarası)
+- "telefon" (müşteri telefon numarası)
 
+##### Hesap Sınıfı Özellikleri:
+- "müşteri" (bir Müşteri nesnesi)
+- "hesap_numarası" (hesap numarası)
+- "bakiye" (hesap bakiyesi)
 
-
+##### Müşteri Sınıfı Metodu:
+- "bilgileri_görüntüle()": Müşterinin adını, soyadını, TC kimlik numarasını ve telefon numarasını görüntüler.
+  
+##### Hesap (Account) Sınıfı Metodları:
+- "para_yatır(self, miktar)": Hesaba belirli bir miktar para yatıran bir metod.
+- "para_çek(self, miktar)": Hesaptan belirli bir miktar para çeken bir metod. Ancak hesapta yeterli bakiye yoksa işlem gerçekleşmemeli ve bir mesaj görüntülenmeli.
+- "bakiyeyi_görüntüle()": Hesap bakiyesini görüntüleyen bir metod.
+  
+Bu iki sınıfı oluşturun, ardından bir Müşteri nesnesi ve bir Hesap nesnesi oluşturun, müşteri bilgilerini Hesap nesnesine ekleyin ve hesap işlemlerini gerçekleştirerek sonuçları görüntüleyin.
 
 ## HackerRank Questions
 
