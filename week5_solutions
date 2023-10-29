@@ -1,0 +1,136 @@
+# 1. Soru
+class Rectangle():
+    def __init__(self,yukseklik,genislik):
+        self.yukseklik=yukseklik
+        self.genislik=genislik
+    
+    def alan(self):
+        return self.genislik*self.yukseklik
+    
+    def cevre(self):
+        return 2 * (self.genislik + self.yukseklik)
+    
+rec1=Rectangle(5,7)
+alan=rec1.alan()                                #   Bu ne ise yaradi
+cevre=rec1.cevre()                              #   Bu ne ise yaradi
+
+print("Dikdörtgenin alanı= {} , dikdörtgenin cevresi= {}".format(alan,cevre))
+
+# 2. Soru
+class Okul():
+    def __init__(self,ad,kurulus_yili):
+        self.ad=ad
+        self.kurulus_yili=kurulus_yili
+        self.ogrenciler=[]                 # yukarida gecmeyip burada olma ve self yazmasi neden
+        self.ogretmenler=[]
+
+    def yeni_ogrenci_ekle(self,ogrenci_adi,sinifi):
+        self.ogrenciler.append((ogrenci_adi,sinifi))          # niye 2 parantez var
+    
+    def yeni_ogretmen_ekle(self, ogretmen_adi, brans):
+        self.ogretmenler.append((ogretmen_adi,brans))
+    
+    def ogrenci_listesi_görüntüle(self):
+        for ad,sinif in self.ogrenciler:
+            print(f"Ogrencinin adı: {ad} Ogrencinin sınıfı {sinif} ")
+    def ogretmen_listesi_görüntüle(self):
+         for ad,brans in self.ogretmenler:
+            print(f"Ogretmenin adı: {ad} Ogretmenin bransı: {brans} ")
+
+okul1=Okul('ataturk ilkokulu', 2000)
+okul1.yeni_ogrenci_ekle('hatice',3)
+okul1.yeni_ogrenci_ekle('engin',5)
+okul1.yeni_ogretmen_ekle('hatice','tarih')
+okul1.yeni_ogretmen_ekle('engin','geometri')
+okul1.ogrenci_listesi_görüntüle()                                  #bu soruda ekran donutu veren def teki printi buranin tetiklemesimi
+okul1.ogretmen_listesi_görüntüle()                                  #niye onceki soruda print sonda burada icerde yazildi
+
+# 3. Soru
+class Sekil():
+    def __init__(self,genislik,yukseklik):
+        self.yukseklik=yukseklik
+        self.genislik=genislik
+
+class Dikdorgen(Sekil):
+    def alan_hesapla(self):
+        return self.genislik*self.yukseklik
+
+class Kare(Sekil):                            # aynı "alan_hesapla()" metodunu kullanarak karenin alanını hesaplasın. Bunu nasil yaptik. Yeniden yazdik
+    def alan_hesapla(self):
+        return self.genislik*self.yukseklik
+    
+dik1=Dikdorgen(5,7)
+alan=dik1.alan_hesapla()
+print("Dikdörtgenin alanı:", alan)
+
+kare1=Kare(5,5)
+print("Karenin alanı=", kare1.alan_hesapla())      #bu soruda printleri sona yazmisiz def icine yazmamisiz nedeni nedir
+
+# 4. Soru
+class Vehicle():
+    def __init__(self,marka,model,yil):
+        self.marka=marka
+        self.model=model
+        self.yil=yil
+
+class SUV(Vehicle):
+    def __init__(self, marka, model, yil, dortceker):      # Burada def kullanma sebebimiz deger eklemek mi?
+        super().__init__(marka, model, yil)                #bunun sayesinde burdaki degerleri Vehicle den miras aldi
+        self.dortceker=dortceker
+    def __str__(self) :
+        return "{} marka {} model {} yılı araç {} dir".format(self.marka,self.model,self.yil,self.dortceker)
+
+class SporAraba(Vehicle):
+    def __init__(self, marka, model, yil, max_hiz):
+        super().__init__(marka, model, yil)
+        self.max_hiz= max_hiz
+    def __str__(self) :                                     # Bu satir ne ise yaradi
+        return "{} marka {} model {} yılı araç {} km/h maximum hıza sahiptir".format(self.marka,self.model,self.yil,self.max_hiz)
+# ne zaman print ne zaman return anlayamiyorum
+arac1=SUV('Ford','Ranger','1999','Dört çeker')
+arac2=SporAraba('Mazda','X5','2001','300')
+print(arac1)
+print(arac2)
+
+# 5. Soru
+class Musteri():
+    def __init__(self, ad, soyad, TC_kimlik, telefon):
+        self.ad=ad
+        self.soyad=soyad
+        self.TC_kimlik=TC_kimlik
+        self.telefon=telefon
+    def bilgileri_görüntüle(self):
+        print(f"Müsterinin adı:{self.ad}")                #bunlarda , ad gibi yazamiyormuyduk
+        print(f"Müsterinin soyadı:{self.soyad}")
+        print(f"Müsterinin TC kimlik numarası:{self.TC_kimlik}")
+        print(f"Müsterinin telefonu:{self.telefon}")
+
+class Hesap(Musteri):                                  # musteri de istiyordu soruda neden almadik
+    def __init__(self, ad, soyad, TC_kimlik, telefon, hesap_no, bakiye):
+        super().__init__(ad, soyad, TC_kimlik, telefon)
+        self.hesap_no=hesap_no
+        self.bakiye=bakiye
+
+    def para_cek(self,miktar):                #once para cek yapmaktan bir amac var mi. neden para yatir once degil
+        if miktar>self.bakiye :
+            print("Yetersiz bakiye !..")
+        else:
+            self.bakiye -= miktar
+            
+    def para_yatir(self,miktar):
+        self.bakiye += miktar
+
+    def bakiye_goruntule(self):
+        print("Güncel bakiyeniz:", self.bakiye)
+
+mus1=Musteri('Hatice','Altay', '123123123','123123123')
+hesap1=Hesap(mus1.ad,mus1.soyad,mus1.TC_kimlik,mus1.telefon,'456456',2000)         #burada daha kisa yazim mumkun olur mu?
+hesap1.para_cek(400)
+hesap1.bakiye_goruntule()
+hesap1.para_cek(2000)
+hesap1.bakiye_goruntule()
+hesap1.para_yatir(1000)
+hesap1.bakiye_goruntule()
+hesap1.para_yatir(200)
+hesap1.bakiye_goruntule()
+hesap1.bilgileri_görüntüle()                   # bilgileri_goruntule class Musteri altinda niye mus1 ile baslamadi da hesap1 ile basladi ve hata vermedi
