@@ -72,5 +72,38 @@ okul1.yeni_ogretmen_ekle("Mehmet Hoca", "Fen bilgisi")
 okul1.ogrenci_listesi_goruntule()
 okul1.ogretmen_listesi_goruntule()
 
+# Soru3: Bir "Şekil" sınıfı oluşturun. Bu sınıfın altında iki alt sınıf, "Dikdörtgen" ve "Kare" sınıfları oluşturun.
+# "Şekil" sınıfı, iki özelliğe sahip olsun: "genişlik" ve "yükseklik."
+# "Dikdörtgen" sınıfı, "Şekil" sınıfından miras alsın ve ek olarak bir "alan_hesapla()" metodu eklesin.
+# "Kare" sınıfı da "Şekil" sınıfından miras alsın ve aynı "alan_hesapla()" metodunu kullanarak karenin alanını hesaplasın.
+# Bir "Dikdörtgen" ve bir "Kare" örneği oluşturun, her birinin genişliğini ve yüksekliğini belirleyin, ve her birinin
+# alanını hesaplayarak sonuçları yazdırın.
 
+class Sekil:
+    def __init__(self, genislik, yukseklik):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
+
+    def alan_hesapla(self):
+        alan = self.yukseklik * self.genislik
+        return alan
+
+
+class Dikdortgen(Sekil):
+    def __init__(self,genislik, yukseklik):
+        super().__init__(genislik, yukseklik)
+        self.alan= super().alan_hesapla()
+        print(f"dikdortgenin alani:{self.alan}")
+
+class Kare(Sekil):
+    def __init__(self,kenar_uzunlugu):
+        super().__init__(kenar_uzunlugu,kenar_uzunlugu)
+        self.alan = super().alan_hesapla()
+        print(f"karenin alani: {self.alan}")
+
+dikdortgen = Dikdortgen(5,6)
+dikdortgen.alan_hesapla()
+
+kare = Kare(4)
+kare.alan_hesapla()
   
