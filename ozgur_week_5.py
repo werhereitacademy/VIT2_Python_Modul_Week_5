@@ -188,4 +188,64 @@ sporaraba = Sporaraba("Porche", "Carrera",2022, 360)
 sporaraba.ozellikleri_goruntule()
 
 
+# Soru5: Bir "Müşteri" sınıfı ve bir "Hesap" sınıfı oluşturun. "Hesap" sınıfı, "Müşteri" sınıfından miras alsın ve bir
+# müşterinin banka hesap bilgilerini temsil etsin.
+# 
+# Müşteri Sınıfı Özellikleri:
+# "ad" (müşteri adı)
+# "soyad" (müşteri soyadı)
+# "tc_kimlik" (müşteri TC kimlik numarası)
+# "telefon" (müşteri telefon numarası)
+# Hesap Sınıfı Özellikleri:
+# "müşteri" (bir Müşteri nesnesi)
+# "hesap_numarası" (hesap numarası)
+# "bakiye" (hesap bakiyesi)
+# Müşteri Sınıfı Metodu:
+# "bilgileri_görüntüle()": Müşterinin adını, soyadını, TC kimlik numarasını ve telefon numarasını görüntüler.
+# Hesap (Account) Sınıfı Metodları:
+# "para_yatır(self, miktar)": Hesaba belirli bir miktar para yatıran bir metod.
+# "para_çek(self, miktar)": Hesaptan belirli bir miktar para çeken bir metod. Ancak hesapta yeterli bakiye yoksa
+# işlem gerçekleşmemeli ve bir mesaj görüntülenmeli.
+# "bakiyeyi_görüntüle()": Hesap bakiyesini görüntüleyen bir metod.
+# Bu iki sınıfı oluşturun, ardından bir Müşteri nesnesi ve bir Hesap nesnesi oluşturun, müşteri bilgilerini Hesap
+# nesnesine ekleyin ve hesap işlemlerini gerçekleştirerek sonuçları görüntüleyin.
 
+class Musteri:
+    def __init__(self,ad, soyad, tc_kimlik, telefon):
+        self.ad = ad
+        self.soyad = soyad
+        self.tc_kimlik = tc_kimlik
+        self.telefon = telefon
+
+    def bilgileri_goruntule(self):
+        print(f"Musteri adi: {self.ad}, soyadi: {self.soyad}. tc kimlik no: {self.tc_kimlik}, telefon: {self.telefon} ")
+
+class Hesap(Musteri):
+    def __init__(self, musteri, hesap_numarasi, bakiye=0, ):
+        self.musteri = musteri
+        self.hesap_numarasi = hesap_numarasi
+        self.bakiye = bakiye
+
+    def para_yatir(self, miktar):
+        self.bakiye += miktar
+        print(f"{miktar} TL yatirildi. Yeni bakiye: {self.bakiye}TL")
+
+    def para_cek(self,miktar):
+        if self.bakiye >=miktar:
+            self.bakiye -= miktar
+            print(f"{miktar}TL cektiniz. Yeni bakiye:{self.bakiye}")
+        else:
+            print("Yetersiz bakiye. Islem gerceklestirilemedi.")
+
+    def bakiye_goruntule(self):
+        print(f"Hesaap Numarasi{self.hesap_numarasi}, bakiye: {self.bakiye}Tl")
+
+
+musteri1 = Musteri("Ali", "Yilmaz", 1326594, 535-64685464)
+hesap1 = Hesap(musteri1, 3564986, 1000)
+musteri1.bilgileri_goruntule()
+
+hesap1.para_yatir(500)
+hesap1.para_cek(5000)
+hesap1.para_cek(300)
+hesap1.bakiye_goruntule()
