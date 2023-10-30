@@ -106,4 +106,86 @@ dikdortgen.alan_hesapla()
 
 kare = Kare(4)
 kare.alan_hesapla()
-  
+
+Soru4: Python'da bir "Taşıt" (Vehicle) sınıfı oluşturun. Bu sınıfın aşağıdaki özelliklere sahip olmasını sağlayın:
+# #
+# # Özellikler:
+# # "marka" (Taşıtın markası)
+# # "model" (Taşıtın modeli)
+# # "yıl" (Taşıtın üretim yılı)
+# # Bir "Taşıt" sınıfı oluşturun ve bu sınıftan türetilmiş iki alt sınıf, "AraziAracı" (SUV) ve "SporAraba" (SportsCar)
+# # sınıfları oluşturun.
+# #
+# # "AraziAracı" sınıfı, "Taşıt" sınıfından miras alsın ve ek olarak bir "dört_çeker" özelliği eklesin.
+# # "SporAraba" sınıfı da "Taşıt" sınıfından miras alsın ve ek olarak bir "maksimum_hız" özelliği eklesin.
+# # Her bir sınıftan birer örnek oluşturun, özelliklerini belirleyin ve bu özellikleri görüntülemek için bir program yazın.
+#
+# class Vehicle:
+#     def __init__(self, marka, model, yil):
+#         self.marka = marka
+#         self.model = model
+#         self.yil = yil
+#
+#     def ozellikleri_goruntule(self):
+#         print(f"Markasi: {self.marka}, Modeli: {self.model}, Yili: {self.yil}")
+#
+#
+# class Suv(Vehicle):
+#     def __init__(self, marka, model, yil, dort_ceker):
+#         super().__init__(marka, model, yil)
+#         self.dort_ceker = dort_ceker
+#         super().ozellikleri_goruntule(dort_ceker)
+#         print(f"Markasi: {self.marka}, Modeli: {self.model}, Yili: {self.yil}, Dort Ceker: {self.dort_ceker}")
+#
+# class Sporaraba(Vehicle):
+#     def __init__(self, marka, model, yil, maksimum_hiz ):
+#         super().__init__(marka, model, yil)
+#         self.maksimum_hiz = maksimum_hiz
+#         super().ozellikleri_goruntule(self.maksimum_hiz)
+#
+#
+# vehicle1= Vehicle("Ford", "Taunus", 1976)
+# vehicle1.ozellikleri_goruntule()
+#
+# suv= Suv("Renault", "Captur", 2013, "4x4")
+# suv.ozellikleri_goruntule()
+class Vehicle:
+    def __init__(self, marka, model, yil):
+        self.marka = marka
+        self.model = model
+        self.yil = yil
+
+    def ozellikleri_goruntule(self):
+        print(f"Markasi: {self.marka}, Modeli: {self.model}, Yili: {self.yil}")
+
+
+class Suv(Vehicle):
+    def __init__(self, marka, model, yil, dort_ceker):
+        super().__init__(marka, model, yil)
+        self.dort_ceker = dort_ceker
+
+    def ozellikleri_goruntule(self):
+        super().ozellikleri_goruntule()
+        print(f"4x4: {self.dort_ceker}")
+
+
+class Sporaraba(Vehicle):
+    def __init__(self, marka, model, yil, maksimum_hiz):
+        super().__init__(marka, model, yil)
+        self.maksimum_hiz = maksimum_hiz
+
+    def ozellikleri_goruntule(self):
+        super().ozellikleri_goruntule()
+        print(f"maksimum hiz: {self.maksimum_hiz}")
+
+vehicle1 = Vehicle("Ford", "Taunus", 1976)
+vehicle1.ozellikleri_goruntule()
+
+suv = Suv("Renault", "Captur", "2013", "4x4")
+suv.ozellikleri_goruntule()
+
+sporaraba = Sporaraba("Porche", "Carrera",2022, 360)
+sporaraba.ozellikleri_goruntule()
+
+
+
