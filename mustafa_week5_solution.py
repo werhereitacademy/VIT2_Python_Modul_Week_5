@@ -1,3 +1,5 @@
+### Soru1 ###
+
 class Rectangle:
     def __init__(self,genislik,yukseklik):
         self.genislik = genislik
@@ -11,4 +13,35 @@ class Rectangle:
 rec = Rectangle(5,7)
 print(rec.alan())
 print(rec.cevre())
-    
+
+
+###soru2####
+
+class Okul:
+    ogrenciler = []
+    def __init__(self,ad,kurulus_yili):
+        self.ad = ad
+        self.kurulus_yili = kurulus_yili
+        self.ogrenciler = []
+        self.ogretmenler = []
+    def ogrenci_ekle(self,ogrenci_adi,sinif):
+        self.ogrenciler.append((ogrenci_adi,sinif))
+    def ogretmen_ekle(self,ogretmen_adi,bransi):
+        self.ogretmenler.append((ogretmen_adi,bransi))
+    def oğrenci_listesi_görüntüle(self):
+        for adi,sinifi in self.ogrenciler:
+            print(f"Ogrenci: {adi}    Sinif: {sinifi} ")
+    def oğretmen_listesi_görüntüle(self):
+        for adi,bransi in self.ogretmenler:
+            print(f"Ogretmen: {adi}    Brans: {bransi} ")
+okul= Okul("YunusemreIO",1992)
+okul.ogrenci_ekle("osman",8)
+okul.ogrenci_ekle("samet",3)
+okul.ogretmen_ekle("bekir","matematik")
+okul.ogretmen_ekle("mahmut","Felsefe")
+okul.oğrenci_listesi_görüntüle()
+okul.oğretmen_listesi_görüntüle()
+
+
+
+
