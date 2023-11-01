@@ -1,0 +1,143 @@
+soru1
+class Rectangle:
+    def __init__(self,genişlik,yükseklik):
+        self.genişlik=genişlik
+        self.yükseklik=yükseklik
+    def alan(self):
+        return self.genişlik*self.yükseklik
+    def çevre(self):
+        return (self.genişlik*self.yükseklik)*2
+rectangle_sample=Rectangle(5,7)
+rectangle_sample.alan()
+rectangle_sample.çevre()
+soru2
+class Okul():
+    def __init__(self,ad,kuruluş_yılı):
+        self.ad=ad
+        self.kuruluş_yılı=kuruluş_yılı
+        self.öğrenciler=[]
+        self.öğretmenler=[]
+    def yeni_öğrenci_ekle(self,öğrenci_adı,sınıf):
+        self.öğrenciler.append([öğrenci_adı,sınıf])
+    def yeni_öğretmen_ekle(self,öğretmen_adı,branş):
+        self.öğretmenler.append([öğretmen_adı,branş])
+    def öğrenci_listesi_görüntüle(self):
+        for öğrenci_adı,sınıf in self.öğrenciler:
+            print(f"Öğrenci adı: {öğrenci_adı}\nSınıfı: {sınıf}")
+
+    def öğretmen_listesi_görüntüle(self):
+        for öğretmen_adı,branş in self.öğretmenler:
+            print(f"Öğretmen adı: {öğretmen_adı}\nBranşı: {branş}")
+okul1=Okul("Kayseri Lisesi","1883")
+okul1.ad
+okul1.kuruluş_yılı
+okul1.yeni_öğrenci_ekle("Ali",2)
+okul1.yeni_öğrenci_ekle("Veli",3)
+okul1.yeni_öğrenci_ekle("Hasan",4)
+okul1.öğrenci_listesi_görüntüle()
+okul1.yeni_öğretmen_ekle("Jane", "English")
+okul1.yeni_öğretmen_ekle("Rıfkı", "Beden Eğitimi")
+okul1.yeni_öğretmen_ekle("Hasan","Matematik")
+okul1.öğretmen_listesi_görüntüle()
+
+soru3:
+class Şekil:
+    def __init__(self,genişlik,yükseklik):
+        self.genişlik=genişlik
+        self.yükseklik=yükseklik
+class Dikdörtgen(Şekil):
+    def __init__(self,genişlik,yükseklik):
+        super().__init__(genişlik,yükseklik)
+        
+    def alan_hesapla(self):
+        return self.genişlik*self.yükseklik
+class Kare(Şekil):
+    def __init__(self,genişlik,yükseklik):
+        super().__init__(genişlik,yükseklik)
+    def alan_hesapla(self):
+        if self.genişlik==self.yükseklik:
+            return self.genişlik**2
+        else:
+            print("Genişlik ve yükseklik değerleri aynı olmalı")
+dikdörtgen_sample=Dikdörtgen(8,6)
+dikdörtgen_sample.alan_hesapla()
+kare_sample=Kare(10,10)
+kare_sample.alan_hesapla()
+
+soru4-
+class Taşıt:
+    def __init__(self,marka,model,yıl):
+        self.marka=marka
+        self.model=model
+        self.yıl=yıl
+class AraziAracı(Taşıt):
+    def __init__(self,marka,model,yıl,dört_çeker):
+        super().__init__(marka,model,yıl)
+        self.dört_çeker=dört_çeker
+    def description(self):
+        return f"Bu araç {self.marka}-{self.model} olup {self.yıl} model ve {self.dört_çeker} özelliğe saiptir."
+class SporAraba(Taşıt):
+    def __init__(self,marka,model,yıl,maksimum_hız):
+        super().__init__(marka,model,yıl)
+        self.maksimum_hız=maksimum_hız
+    def description(self):
+        return f"Bu araç {self.marka}-{self.model} olup {self.yıl} model ve {self.maksimum_hız} km hıza sahiptir."
+arazi_aracı1=AraziAracı("Volvo","XC90",2023,"dört_çeker")
+arazi_aracı1.description()
+sportcar1=SporAraba("Mercedes","E-Klasse Cabriolet",2023,350)
+sportcar1.description()
+
+
+soru5:
+class Musteri:
+    def __init__(self,ad,soyad,tc_kimlik,telefon):
+        self.ad=ad
+        self.soyad=soyad
+        self.tc_kimlik=tc_kimlik
+        self.telefon=telefon
+    def bilgileri_goster(self):
+        print(f'Musteri ad-soyad: {self.ad}-{self.soyad}')
+        print(f'Musteri tc_kimlik: {self.tc_kimlik}')
+        print(f'Telefon: {self.telefon}')
+class Hesap(Musteri):
+    def __init__(self,ad,soyad,tc_kimlik,telefon,musteri,hesap_numarasi,bakiye):
+        super().__init__(ad,soyad,tc_kimlik,telefon)
+        self.musteri=musteri
+        self.hesap_numarasi=hesap_numarasi
+        self.bakiye=bakiye
+    def para_yatir(self,miktar):
+        self.bakiye+=miktar
+        return self.bakiye
+    def para_cek(self,miktar):
+        if miktar<=self.bakiye:
+            self.bakiye-=miktar
+            return self.bakiye
+        else:
+            print('Islem basarisiz, yetersiz bakiye!')
+    def bakiye_goruntule(self):
+        print(f'Hesap no: {self.hesap_numarasi}')
+        print(f'Bakiye: {self.bakiye}')
+musteri1=Musteri('Ali','Can',36723406478,98763566364)
+musteri1.bilgileri_goster()
+hesap1=Hesap('Hasan','Yucel',5365327374,894756342,'Hasan Yucel',4756895847,10000)
+print(hesap1.musteri)
+print(hesap1.hesap_numarasi)
+print(hesap1.bakiye)
+print(hesap1.para_yatir(5000))
+print(hesap1.para_yatir(20000))
+print(hesap1.para_cek(5000))
+print(hesap1.para_cek(1000))
+print(hesap1.para_cek(30000))
+hesap1.bakiye_goruntule()
+
+
+
+
+
+
+
+
+
+
+
+
