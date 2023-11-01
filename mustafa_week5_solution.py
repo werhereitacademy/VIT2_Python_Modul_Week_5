@@ -43,5 +43,27 @@ okul.oğrenci_listesi_görüntüle()
 okul.oğretmen_listesi_görüntüle()
 
 
+###Soru3 ###
 
+class Sekil:
+    def __init__(self,genislik,yukseklik):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
+
+class Dikdortgen(Sekil):
+    def __init__(self, genislik, yukseklik):
+        super().__init__(genislik, yukseklik)
+    def alan_hesapla(self):
+        alan = self.genislik*self.yukseklik
+        print( f"sekllimizin alani : {alan}")
+class Kare(Dikdortgen):
+    def __init__(self, genislik, yukseklik):
+        super().__init__(genislik, yukseklik)
+    def alan_hesapla(self):
+        return super().alan_hesapla()
+    
+kare = Kare(5,5)
+dikdrtgn = Dikdortgen(5,7)
+dikdrtgn.alan_hesapla()
+kare.alan_hesapla()
 
