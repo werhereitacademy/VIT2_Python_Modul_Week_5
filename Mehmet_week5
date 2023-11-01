@@ -89,43 +89,48 @@ sportcar1.description()
 
 
 soru5:
-class Müşteri:
-    def __init__(self,ad,soyad,TC_kimlik,telefon):
+class Musteri:
+    def __init__(self,ad,soyad,tc_kimlik,telefon):
         self.ad=ad
         self.soyad=soyad
-        self.TC_kimlik=TC_kimlik
+        self.tc_kimlik=tc_kimlik
         self.telefon=telefon
-    def bilgileri_görüntüle(self):
-        print(f"Müşteri ad-soyad: {self.ad}-{self.soyad}")
-        print(f"Müşteri kimlik no: {self.TC_kimlik}")
-        print(f"Telefon: {self.telefon}")
-class Hesap(Müşteri):
-    def __init__(self,ad,soyad,TC_kimlik,telefon,müşteri,hesap_numarası,bakiye=0):
-        super().__init__(ad,soyad,TC_kimlik,telefon)
-        self.müşteri=müşteri
-        self.hesap_numarası=hesap_numarası
+    def bilgileri_goster(self):
+        print(f'Musteri ad-soyad: {self.ad}-{self.soyad}')
+        print(f'Musteri tc_kimlik: {self.tc_kimlik}')
+        print(f'Telefon: {self.telefon}')
+class Hesap(Musteri):
+    def __init__(self,ad,soyad,tc_kimlik,telefon,musteri,hesap_numarasi,bakiye):
+        super().__init__(ad,soyad,tc_kimlik,telefon)
+        self.musteri=musteri
+        self.hesap_numarasi=hesap_numarasi
         self.bakiye=bakiye
-    
-    def para_yatır(self,miktar):
-            return self.bakiye += miktar
-
-    def para_çek(self,miktar):
+    def para_yatir(self,miktar):
+        self.bakiye+=miktar
+        return self.bakiye
+    def para_cek(self,miktar):
         if miktar<=self.bakiye:
-            return self.bakiye -= miktar
-            
+            self.bakiye-=miktar
+            return self.bakiye
         else:
-            print("İşlem başarısız. Yeterli bakiye bulunmamaktadır.")
-    def bakiye_görüntüle(self):
-        print(f"Hesap no: {self.hesap_numarası}")
-        print(f"Bakiye: {self.bakiye}")
-müşteri1=Müşteri("Ali","Can","47823678367","05055050550")
-müşteri1.telefon
-müşteri1.bilgileri_görüntüle()
-hesap1=Hesap("Ali","Can","47823678367","05055050550","Ali Can","26478893003",5000)
-hesap1.bakiye
-hesap1.para_yatır(10000)
-hesap1.para_yatır(50000)
-hesap1.bakiye_görüntüle()
+            print('Islem basarisiz, yetersiz bakiye!')
+    def bakiye_goruntule(self):
+        print(f'Hesap no: {self.hesap_numarasi}')
+        print(f'Bakiye: {self.bakiye}')
+musteri1=Musteri('Ali','Can',36723406478,98763566364)
+musteri1.bilgileri_goster()
+hesap1=Hesap('Hasan','Yucel',5365327374,894756342,'Hasan Yucel',4756895847,10000)
+print(hesap1.musteri)
+print(hesap1.hesap_numarasi)
+print(hesap1.bakiye)
+print(hesap1.para_yatir(5000))
+print(hesap1.para_yatir(20000))
+print(hesap1.para_cek(5000))
+print(hesap1.para_cek(1000))
+print(hesap1.para_cek(30000))
+hesap1.bakiye_goruntule()
+
+
 
 
 
