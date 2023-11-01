@@ -1,0 +1,250 @@
+## Soru1: 
+
+class Rectangle():
+    def __init__(self,genislik: int, yukseklik: int):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
+        
+
+    def Alan(self):
+        alan = self.genislik * self.yukseklik
+        return (f'Alanı: {alan}')
+
+    def Cevre(self):
+        cevre = 2*(self.genislik + self.yukseklik)
+        return (f'Çevresi: {cevre}')
+
+sayilar = Rectangle(5,7)
+
+print(sayilar.Alan())
+print(sayilar.Cevre())
+
+
+#*************************
+
+# Soru2: 
+
+class Okul():
+    def __init__(self, okulad, kurulus_yili): #, ogrenciler=None, ogretmenler=None):
+        self.okulad = okulad
+        self.kurulus_yili = kurulus_yili
+        self.ogrenciler = []
+        self.ogretmenler = {}
+
+    def ogrenci_ekle(self, ogrenci_adi, sinifi):
+        self.ogrenci_adi = ogrenci_adi
+        self.sinifi = sinifi
+        if ogrenci_adi not in self.ogrenciler:
+            self.ogrenciler.append([self.ogrenci_adi, self.sinifi])
+        
+    def ogrenci_goruntule(self):
+        for isim, sinif in self.ogrenciler:
+            print (f"Ogrencinin Adı: {isim} - Sınıfı: {sinif}")
+
+    def ogretmen_ekle(self, ogretmen_adi, brans):
+        if ogretmen_adi not in self.ogretmenler:
+            self.ogretmenler[ogretmen_adi] = brans
+
+    def ogretmen_goruntule(self):
+        for ogretmen, brans in self.ogretmenler.items():
+            print(f"Oğretmenin Adı: {ogretmen} - Branşı: {brans}")
+
+okul1 = Okul('Çankaya Lisesi', '1969')
+okul1.ogrenci_ekle('Deniz','11A')
+okul1.ogrenci_ekle('Muhtar','10A')
+okul1.ogretmen_ekle('Ayşe', 'Kimya')
+okul1.ogretmen_ekle('Fırat', 'Elektrik')
+okul1.ogretmen_ekle('Cengiz','Matematik')
+
+#-----------
+okul2 = Okul('Kurtuluş Lisesi', '1975')
+okul2.ogrenci_ekle('Hakan', '11B')
+okul2.ogrenci_ekle('Filiz','10A')
+okul2.ogretmen_ekle('Palta','Matematik')
+okul2.ogretmen_ekle('Murat','Edebiyat')
+
+#------
+okul3 = Okul('Deneme Lisesi', '1955')
+okul3.ogrenci_ekle('Erdem','9C')
+okul3.ogrenci_ekle('Can','9F')
+okul3.ogrenci_ekle('Kazım','11C')
+okul3.ogretmen_ekle('Nuray','Tarih')
+okul3.ogretmen_ekle('Seviç','Coğrafya')
+#-----
+
+print("OKUL 1 VERİLERİ")
+print(okul1.okulad,"-", okul1.kurulus_yili)
+
+print(f"Ogrenciler Listesi: {okul1.ogrenciler}")
+print(f"Ogretmenler Sözlüğü: {okul1.ogretmenler}")
+
+okul1.ogrenci_goruntule()
+okul1.ogretmen_goruntule()
+
+print('-----------------')
+print("OKUL 2 VERİLERİ")
+print(okul2.okulad, okul2.kurulus_yili)
+
+print(f"Ogrenciler Listesi: {okul2.ogrenciler}")
+print(f"Ogretmenler Sözlüğü: {okul2.ogretmenler}")
+
+okul2.ogrenci_goruntule()
+okul2.ogretmen_goruntule()
+
+print('-----------------')
+print("OKUL 3 VERİLERİ")
+print(okul3.okulad, okul3.kurulus_yili)
+
+print(f"Ogrenciler Listesi: {okul3.ogrenciler}")
+print(f"Ogretmenler Sözlüğü: {okul3.ogretmenler}")
+
+okul3.ogrenci_goruntule()
+okul3.ogretmen_goruntule()
+
+
+#*************************
+
+# Soru3: 
+
+class Sekil():
+    def __init__(self,genislik:int, yukseklik:int):
+        self.genislik = genislik
+        self.yukseklik = yukseklik
+
+class Dikdortgen(Sekil):
+    def Alan(self):
+        alan = self.genislik * self.yukseklik
+        return alan
+
+class Kare(Sekil):
+    def Kare_Alan(self):
+        if self.yukseklik == self.genislik:
+            kare_alan = self.genislik * self.yukseklik
+            print(f'Karenin Alanı: {kare_alan}')
+        else:
+            print('Lütfen İki Kenarı Eşit Bir Değer Giriniz!')
+
+
+
+dikdortgen = Dikdortgen(5, 9)
+print(f'Dikdörtgenin Alanı: {dikdortgen.Alan()}')
+
+kare1 = Kare(6,7)
+kare1.Kare_Alan()
+print('Yeniden Deneme - İki Kenarı Eş Değer Olacak Şekilde')
+kare = Kare(3,3)
+kare.Kare_Alan()
+
+#*************************
+
+# Soru4: 
+
+class Tasit():
+    def __init__(self, marka, model, uretim_yili:int):
+        self.marka = marka
+        self.model = model
+        self.uretim_yili = uretim_yili
+
+class AraziAraci_SUV(Tasit):
+    def __init__(self,dort_ceker, marka, model, uretim_yili:int):
+        Tasit.__init__(self,marka,model,uretim_yili)
+        self.dort_ceker = dort_ceker
+
+    def AraziAraci_goruntule(self):
+        return "----> Aracın Özelliği: {} - Aracın Adı: {} - Aracın Modeli: {} - Aracın Üretim Yılı: {}".format(self.dort_ceker, self.marka, self.model, self.uretim_yili)
+
+class SporAraba(Tasit):
+    def __init__(self,maksimum_hiz:int, marka, model, uretim_yili:int):
+        Tasit.__init__(self, marka, model, uretim_yili)
+        self.maksimum_hiz = maksimum_hiz
+
+    def SporAraba_goruntule(self):
+        return "====> Aracın Maksimum Hızı: {} - Aracın Adı: {} - Aracın Modeli: {} - Aracın Üretim Yılı: {}".format(self.maksimum_hiz, self.marka, self.model, self.uretim_yili)
+
+arac = Tasit('Volkswagen','Golf',2020)
+arac2 = Tasit('Porche', '911 Carrera', 2020)
+arazi1 = AraziAraci_SUV('4x4', 'Volkswagen', 'T-Roc', 2022)
+spor1 = SporAraba(330, 'Porsche', '911', 2022)
+
+
+while True:
+    print("Araç Durum Sorgulama Programına Hoşgeldiniz...")
+    secim = input("Arazi Aracı Görüntülemek için 1'i - Spor Araba için 2'yi - Çıkmak için 0'ı Tuşlayın.\nSeçim:")
+    if secim == '0':
+        break
+    elif secim == '1':
+        print(arazi1.AraziAraci_goruntule())
+    elif secim == '2':
+        print(spor1.SporAraba_goruntule())
+    else:
+        print("Yanlış Bir Seçim Yaptınız, Lütfen Tekrar Deneyiniz. Seçim:")
+
+#*************************
+
+# Soru5:
+
+class Musteri():
+    def __init__(self, adi, soyadi, tc, tel):
+        self.adi = adi
+        self.soyadi = soyadi
+        self.tc = tc
+        self.tel = tel
+    def bilgileri_goruntule(self):
+        return "Müşterinin Adı: {}, Müşterinin Soyadı: {}, Müşterinin TC'si: {},  Müşterinin Telefonu: {}".format(self.adi, self.soyadi, self.tc, self.tel)
+
+
+
+class Hesap(Musteri):
+    def __init__(self, musteri, hesapno, bakiye:int, adi, soyadi, tc, tel):
+        Musteri.__init__(self, adi, soyadi, tc, tel)
+        self.musteri = musteri
+        self.hesapno = hesapno
+        self.bakiye = bakiye
+
+    def __repr__(self):
+        print(f"Müşteri  {self.musteri}'dir.") #Buna bak
+
+    def para_yatir(self,miktar:int):
+        self.miktar = miktar #İçini sonra doldur.
+        self.bakiye = self.bakiye + self.miktar
+
+    def para_cek(self,ne_kadar):
+        self.ne_kadar = ne_kadar
+        if self.bakiye < ne_kadar:
+            print(f"Yetersiz Bakiye! Lütfen Daha Az Bir Tutar Girerek Deneyin! - Mevcut Bakiyeniz: {self.bakiye} Euro'dur.")
+        else:
+            self.bakiye = self.bakiye - self.ne_kadar
+            print(f"{self.ne_kadar} Euro Tutarında Para Çekilmiştir. Kalan Bakiye: {self.bakiye} Euro'dur.")
+
+
+        def bakiye_goruntule(self):
+            return "Kalan Bakiyeniz = {} Eurodur.".format(self.bakiye)
+
+icardi = Musteri('Mauro', 'Icardi', '35865992670', '05015010101')
+
+hesap_nesne = Hesap(icardi, 'NL3500002023', 35000, 'Mauro', 'Icardi', '35865992670', '05015010101')
+
+print(f'Müşteri Bilgileri= {icardi.bilgileri_goruntule()}')
+print(f'Hesap Bakiyesi= {hesap_nesne.bakiye}')
+print('\nHesap İşlemleri')
+print('Para Yatırma += 100')
+
+birinci_yatirma = hesap_nesne.para_yatir(100)
+print(f'Bakiye Kontrol: {hesap_nesne.bakiye}')
+print('-------')
+print('İkinci Kez Para Yatırma += 5000')
+ikinci_yatirma = hesap_nesne.para_yatir(5000)
+print(f'Bakiye Kontrol: {hesap_nesne.bakiye}')
+print('-------')
+print('Para Çekme İşlemi -= 500000')
+birinci_cekme_denemesi = hesap_nesne.para_cek(500000)
+print(f'Bakiye Kontrol: {hesap_nesne.bakiye}')
+print('-------')
+print('Para Çekme İkinci Deneme -= 40000')
+ikinci_cekme_denemesi = hesap_nesne.para_cek(40000)
+print(f'Bakiye Kontrol: {hesap_nesne.bakiye}')
+print('-------')
+print('Hesabı Sıfırlamak -= 100')
+kalani_cekme = hesap_nesne.para_cek(100)
+print(f'Bakiye Kontrol: {hesap_nesne.bakiye}')
+print('Fakir ICARDI :)')
