@@ -67,3 +67,73 @@ dikdrtgn = Dikdortgen(5,7)
 dikdrtgn.alan_hesapla()
 kare.alan_hesapla()
 
+
+###Soru4###
+
+class Vehicle:
+    def __init__(self,marka,model,yil):
+        self.marka = marka
+        self.model = model
+        self.yil = yil
+class SUV(Vehicle):
+    def __init__(self, marka, model, yil,dort_ceker):
+        super().__init__(marka, model, yil)
+        self.dort_ceker = dort_ceker
+    def __str__(self) :
+        return f"{self.marka} marka {self.model} model {self.yil} yili araç {self.dort_ceker} dir"
+class SportsCar(Vehicle):
+    def __init__(self, marka, model, yil,max_hiz):
+        super().__init__(marka, model, yil)
+        self.max_hiz = max_hiz
+    def goster(self) :
+        return f"{self.marka} marka {self.model} model {self.yil} yili araç ve maksimum hizi {self.max_hiz} dir"
+sporArac = SportsCar("mitsubichi","lancer",2002,280)
+araziArac = SUV("Jeep","ciks",2023,"dortceker")
+print(sporArac.goster())
+print(araziArac)
+
+
+
+###Soru5###
+
+class Musteri():
+    def __init__(self, ad, soyad,kimlik_no, telefon):
+        self.ad = ad
+        self.soyad = soyad
+        self.kimlik_no = kimlik_no
+        self.telefon = telefon
+    def bilgileri_görüntüle(self):
+        print(f"Müsterinin adi:{self.ad}")
+        print(f"Müsterinin soyadi:{self.soyad}")
+        print(f"Müsterinin TC kimlik numarasi:{self.kimlik_no}")
+        print(f"Müsterinin telefonu:{self.telefon}")
+
+class Hesap(Musteri):
+    def __init__(self,ad,soyad,kimlik_no,telefon,hesap_no,bakiye):
+        super().__init__(ad, soyad,kimlik_no, telefon)
+        self.hesap_no=hesap_no
+        self.bakiye=bakiye
+
+    def para_cek(self,miktar):
+        if miktar>self.bakiye :
+            print("Yetersiz bakiye !..")
+        else:
+            self.bakiye -= miktar
+
+    def para_yatir(self,miktar):
+        self.bakiye += miktar
+
+    def bakiyeyi_goruntule(self):
+        print("Güncel bakiyeniz:", self.bakiye)
+    def __str__(self) :
+        return f"{self.ad} {self.soyad} kimlik no : {self.kimlik_no}  tel: {self.telefon}  bakiyesi {self.bakiye}"
+
+musteri1 = Musteri("mustafa","Kara","18181818","05325553334")
+hesap = Hesap(musteri1.ad,musteri1.soyad,musteri1.kimlik_no,musteri1.telefon,"777777",5000)
+hesap.para_yatir(1000)
+hesap.bakiyeyi_goruntule()
+hesap.para_cek(300)
+hesap.para_yatir(100)
+hesap.bakiyeyi_goruntule()
+print(hesap)
+
